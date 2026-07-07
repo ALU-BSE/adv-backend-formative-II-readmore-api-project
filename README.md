@@ -186,74 +186,15 @@ If the author has **no books**, return sensible values instead of crashing — d
 
 ## What to submit
 
-Submit **a video recording** in which you walk through your entire implementation. Your video should:
+
+Submit a **a Github repository link** containing your project code. The repository must also contain **a video recording** in which you walk through your entire implementation. Your video should:
 
 - Show the code for your models, controllers, and routes, explaining what each part does.
 - Run the server and demonstrate **every endpoint** live in your API client (Postman/Insomnia/REST Client).
 - Demonstrate each **Part 4** business rule working — the rejected orphan (400), the rejected duplicate (409), the rejected invalid price/year (422), your author-delete policy, `GET /books` with **at least two filters combined**, and `GET /authors/:id/stats`.
 - **Explain your reasoning out loud**, especially your choice of author-delete policy (Requirement 4) and its downside.
 
-> We are grading how you *think*, so narrate your decisions — don't just click through. Also submit your project code (a repository link or a zip **without** `node_modules`).
+> I will be grading how you *think*, so narrate your decisions — don't just click through.
 
+Good luck — build it one endpoint at a time, and test each in your API client before moving on.
 ---
----
-
-## 🎯 Grading rubric — 30 points
-
-| Weight | Criterion                              |
-|--------|----------------------------------------|
-| 8      | Core API, Models & Linking             |
-| 9      | Business Rules & Critical Thinking (Part 4) |
-| 5      | Code Quality & Structure               |
-| 4      | Commit History & Meaningful Commits    |
-| 4      | Video Assessment & Explanation         |
-| **30** | **Total**                              |
-
-### Core API, Models & Linking — /8
-
-| Exemplary (8 → >6) | Proficient (6 → >4) | Developing (4 → >2) | Needs Improvement (2 → >0) |
-|---|---|---|---|
-| All Author and Book CRUD endpoints work, plus `GET /authors/:id/books`. Book correctly **references** Author and reads show the author's full details (populated). Models have sensible required fields. Missing ids return 404. | Most endpoints work and the entities are linked, with minor gaps (a missing 404, a small bug, or a read that doesn't populate). | Several endpoints missing or buggy; linking or populate only partially working. | Major endpoints missing or broken; the two entities are not properly linked. |
-
-### Business Rules & Critical Thinking (Part 4) — /9
-
-| Exemplary (9 → >7) | Proficient (7 → >5) | Developing (5 → >2) | Needs Improvement (2 → >0) |
-|---|---|---|---|
-| All six requirements enforced with the correct status codes (400 / 409 / 422). Filter/sort on `GET /books` is built **dynamically** and handles any combination of params. Stats endpoint handles the no-books case. Delete policy implemented **and** clearly justified. Pagination challenge is a plus. | 4–5 requirements correct; filtering mostly dynamic; minor status-code or edge-case slips; delete policy implemented with some justification. | 2–3 requirements met; filter hard-coded or partial; weak or missing justification; edge cases (duplicates, orphans, no-books) missed. | 0–1 requirement met; rules not enforced; little evidence of design decisions. |
-
-### Code Quality & Structure — /5
-
-| Exemplary (5 → >4) | Proficient (4 → >2) | Developing (2 → >1) | Needs Improvement (1 → >0) |
-|---|---|---|---|
-| Clean separation of models / controllers / routes. Consistent naming, readable code, proper `async/await` with error handling. Connection string in `.env`, not hard-coded. No dead or duplicated code. | Mostly clean and organised; minor structure, naming, or error-handling issues; some repetition. | Logic crammed into routes; inconsistent style; poor error handling or secrets hard-coded. | Disorganised, everything in one file, hard to follow. |
-
-### Commit History & Meaningful Commits — /4
-
-| Exemplary (4 → >3) | Proficient (3 → >2) | Developing (2 → >1) | Needs Improvement (1 → >0) |
-|---|---|---|---|
-| Many small, focused commits — roughly one per feature/endpoint — with clear, descriptive messages. Incremental progress is visible; no giant code dumps. | Reasonable commit granularity and mostly meaningful messages, with a few oversized commits. | Few large commits and vague messages ("update", "fix", "stuff"); little incremental history. | One or two massive commits, or all code in a single push; no meaningful history. |
-
-### Video Assessment & Explanation — /4
-
-| Exemplary (4 → >3) | Proficient (3 → >2) | Developing (2 → >1) | Needs Improvement (1 → >0) |
-|---|---|---|---|
-| Clear walkthrough of the code plus a live demo of every endpoint and every Part 4 rule. Narrates the reasoning and confidently justifies the author-delete choice and its trade-offs. Shows genuine understanding. | Demonstrates most functionality and explains the reasoning adequately, with minor gaps. | Demo incomplete; clicks through with little explanation of the *why*. | Video missing or non-functional, or no explanation of the work. |
-
----
-
-## ✅ Grading checklist
-
-- [ ] Server connects to MongoDB and starts without errors
-- [ ] Logic is in controllers; routes only wire URLs to controller functions
-- [ ] Author has all 5 working endpoints
-- [ ] Book has all 5 working endpoints
-- [ ] Book is correctly linked to Author, and the author's details show on book reads
-- [ ] `GET /authors/:id/books` returns that author's books
-- [ ] Missing ids return 404 (not a crash)
-- [ ] **Scenario:** orphan books rejected (400); duplicate titles per author rejected (409); invalid price/year rejected (422)
-- [ ] **Scenario:** author-delete policy implemented *and* justified out loud in the video
-- [ ] **Scenario:** `GET /books` filters and sorts dynamically from query params
-- [ ] **Scenario:** `GET /authors/:id/stats` works, including the no-books case
-- [ ] Written questions answered
-
-Good luck — build it one endpoint at a time, and test each in your API client before moving on. 🙂
